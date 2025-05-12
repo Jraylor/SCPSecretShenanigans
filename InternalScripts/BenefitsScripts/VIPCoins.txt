@@ -1,0 +1,32 @@
+# VIP Coins Script for SCP: Secret Shenanigans!
+
+HINT {SENDER} 5 <size=50>Granting <i><b>VIP Coins</b></i><br><size=25>□□□□□□□□□□
+
+WAIT MIL {RANDOM:INT:1:1000}
+HINT {SENDER} 5 <size=50>Granting <i><b>VIP Coins</b></i><br><size=25>■□□□□□□□□□
+
+WAIT MIL {RANDOM:INT:1:1000}
+HINT {SENDER} 5 <size=50>Granting <i><b>VIP Coins</b></i><br><size=25>■■■□□□□□□□
+
+WAIT MIL {RANDOM:INT:1:1000}
+HINT {SENDER} 5 <size=50>Granting <i><b>VIP Coins</b></i><br><size=25>■■■■□□□□□□
+
+WAIT MIL {RANDOM:INT:1:1000}
+HINT {SENDER} 5 <size=50>Granting <i><b>VIP Coins</b></i><br><size=25>■■■■■□□□□□
+
+WAIT MIL {RANDOM:INT:1:1000}
+HINT {SENDER} 5 <size=50>Granting <i><b>VIP Coins</b></i><br><size=25>■■■■■■■□□□
+
+WAIT MIL {RANDOM:INT:1:1000}
+HINT {SENDER} 5 <size=50>Granting <i><b>VIP Coins</b></i><br><size=25>■■■■■■■■□□
+
+WAIT MIL {RANDOM:INT:1:1000}
+HINT {SENDER} 5 <size=50>Granting <i><b>VIP Coins</b></i><br><size=25>■■■■■■■■■□
+
+WAIT MIL {RANDOM:INT:1:1000}
+HINT {SENDER} 5 <size=50>Granting <i><b>VIP Coins</b></i><br><size=25>■■■■■■■■■■
+
+WAIT MIL 50
+HINT {SENDER} 3 <size=50>Granted <i><b>VIP Coins!</i></b><br><color=green><size=25>■■■■■■■■■■
+CLEARINVENTORY {SENDER}
+ITEM ADD {SENDER} 35 8
