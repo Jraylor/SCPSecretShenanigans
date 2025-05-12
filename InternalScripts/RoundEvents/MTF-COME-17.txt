@@ -1,0 +1,9 @@
+DISABLE NTFANNOUNCEMENT
+
+COMMAND /WAVE SPAWN NTFSPAWNWAVE FALSE
+WAIT UNTIL {WAVERESPAWNING} = TRUE
+
+CASSIE LOUD customcassie custom.candy MTFUNIT EPSILON 11 DESIGNATED COME 17 HASENTERED ALLREMAINING AWAITINGRECONTAINMENT 600 30 2 SCPSUBJECTS|Mobile Task Force Unit Epsilon-11 designated CUM-17 has entered the facility.<size=0>/////////////////////////////////////////////////////////////////////////////////</size><split>All remaining personnel are advised to proceed with standard evacuation protocols until an MTF squad reaches your destination.<size=0>///////////////////////////////////////////////////////////////////////////////////////////</size><split>Awaiting recontainment of 632 SCP subjects.
+
+WAIT UNTIL {CASSIESPEAKING} = FALSE
+ENABLE NTFANNOUNCEMENT
