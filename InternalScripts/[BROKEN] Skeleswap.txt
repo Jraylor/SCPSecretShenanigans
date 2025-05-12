@@ -1,0 +1,2 @@
+# Skeleswap Script for SCP: Secret Shenanigans!
+# If player is SCP, change into Skeleton guy if none already exist.
