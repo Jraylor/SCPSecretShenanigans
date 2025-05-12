@@ -1,0 +1,97 @@
+HEY!!! this is probs a bit outdated so ignore this for the time being, but this will be expandedd and improved upon soon
+
+# Carnage in Chaos Centre Event
+# Spawn ChaosRifleman, ChaosRepressor & ChaosMarauder, as well as 3 NtfCaptain
+
+SAVE {Rif} ({PLAYERS}/2)
+SAVE {Mar} ({PLAYERS}/3)
+
+HINT 10 {Rif}, {Mar}
+
+# -- SPAWNRULE FOR ROLES --
+SPAWNRULE NtfCaptain 3
+SPAWNRULE ChaosRifleman {ROUND:Rif:UP}
+SPAWNRULE ChaosMarauder {ROUND:Mar:UP}
+SPAWNRULE ChaosRepressor
+
+# -- DISABLE/LOCK FUNCTIONS/DOORS --
+DISABLE SHOOTING
+DISABLE DROPPING
+DOOR LOCK SurfaceGate
+DOOR LOCK NukeSurface
+ELEVATOR LOCK LczA
+ELEVATOR LOCK LczB
+
+# [GAME BEGIN]
+WAITUNTIL {ROUNDSTARTED}
+
+# Early Decontamination to Lock off LCZ
+DECONTAMINATE FORCENICK
+
+# -- VARIABLE SAVING --
+PLAYERVAR SAVE {CONSPIRER} {MTF} 
+PLAYERVAR SAVE {COMRADE} {CI} 
+
+# - Role Setup -
+
+# Change skin to Chaos to blend in
+RESKIN {CONSPIRER} ChaosMarauder {COMRADE}
+
+# Replace inventory with Chaos Rifleman | Replace Keycard for role's detail
+CLEARINVENTORY {CONSPIRER}
+LOADOUT {CONSPIRER} ChaosRifleman
+
+REMOVEITEM {CONSPIRER} KeycardChaosInsurgency
+
+GIVE {CONSPIRER} KeycardMTFOperative
+GIVE {CONSPIRER} Flashlight
+GIVE {CONSPIRER} GrenadeFlash
+
+TPX * -40.676 991.881 -36.127
+
+WAITSEC 3
+
+# -- DIALOGUE SETUP --
+PLAYERVAR SAVE {TALK1} {CI} 1
+PLAYERVAR SAVE {TALK2} {CI} 1
+PLAYERVAR SAVE {TALK3} {CI} 1
+WAITSEC 1
+
+HINT 6 <align="left"><b><color=green>{SHOW:TALK1:DISPLAYNAME}:</color></b> <br><size=23><i>"Can someone remind me what our goal here is? 420-J got me f██ked earlier"</i>
+WAITSEC 6
+
+HINT 4 <align="center"><b><color=yellow>{SHOW:TALK2:DISPLAYNAME}:</color></b> <br><size=23><i>"We came here to sneak in and set the Nuke off, entering through Gate-A.”</i>
+WAITSEC 4
+
+HINT 4 <align="right"><b><color=orange>{SHOW:TALK3:DISPLAYNAME}:</color></b> <br><size=23><i>"This time, should we be more careful though?”</i>
+WAITSEC 4
+
+HINT 3 <align="left"><b><color=green>{SHOW:TALK1:DISPLAYNAME}:</color></b> <br><size=23><i>"Why, someone scared?”</i>
+WAITSEC 3
+
+HINT 5 <align="right"><b><color=orange>{SHOW:TALK3:DISPLAYNAME}:</color></b> <br><size=23><i>"No, just that, I heard stuff from others about a potential sabotage.”</i>
+WAITSEC 5
+
+HINT 5 <align="left"><b><color=green>{SHOW:TALK1:DISPLAYNAME}:</color></b> <br><size=23><i>"Come on, that is just nonsense. Lets just blow this s██t up.”</i>
+WAITSEC 6
+
+# --- START GAME ---
+GameBegin:
+
+# -- FRIENDLY FIRE TOGGLE, ENABLE SHOOTING & HINTS --
+COMMAND /setconfig friendly_fire toggle
+
+ENABLE SHOOTING
+
+HINTPLAYER {CONSPIRER} 20 You're a secret <b><color=red>Conspirer</color></b> among the Insurgency<br><size=24>Make sure nobody leaves the facility from here until they’re dead.<br><br><size=28><color=orange>Terminate all the Chaos</color> without being noticed, and <color=orange>prevent the detonation.</color>
+HINTPLAYER {COMRADE} 20 You are a <b><color=green>Chaos Insurgent</color></b><br><size=24>Word has got around that there are plans of sabotage - In any case, don’t let it happen.<br><br><size=28>There are <color=red>{CONSPIRER} Conspirers</color> within your squad, <color=orange>eliminate them</color> and <color=yellow>detonate the nuke.</color>
+
+COUNTDOWN {COMRADE} 600 <br><size=38><color=white></b>Detonate the <color=yellow><b>Nuclear Warhead:</b></color>
+COUNTDOWN {CONSPIRER} 600 <br><size=38><color=white></b>Terminate all <color=red><b>Chaos Insurgency:</b></color>
+
+# [ Scripting Objectives ]
+
+# --- GAME IN-PROGRESS ---
+# - Set timer for the Nuke
+# - Set up randomised Blackouts (max length: 15)
+# - Create the two endings
