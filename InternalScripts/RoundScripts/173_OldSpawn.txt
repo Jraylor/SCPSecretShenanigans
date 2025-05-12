@@ -1,0 +1,19 @@
+!-- AUTORUN
+# Old SCP-173 Spawn Script!
+# Wait until the round has started
+WAIT UNTIL {ROUND:STARTED} = TRUE
+
+# Stop if there aren't any SCP-173
+STOP $IF {SCP173} = 0
+
+# 30% Chance of Spawn
+GOTO SpawnChange $IF {RANDOM:INT:1:10} > 7
+STOP
+
+SpawnChange:
+TPSPAWN {SCP173} Inside173Gate
+DOOR LOCK Scp173Gate
+WAIT SEC 35
+DOOR UNLOCK Scp173Gate
+DOOR OPEN Scp173Gate
+STOP
