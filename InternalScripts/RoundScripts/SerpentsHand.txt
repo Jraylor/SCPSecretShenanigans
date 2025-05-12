@@ -1,0 +1,38 @@
+!-- AUTORUN
+# Serpents Hand Script - Spawn Once!
+
+WAIT UNTIL {ROUND:STARTED} = TRUE
+WAIT UNTIL {TIME:ROUNDMINUTES} = 5
+
+WAIT SEC {RANDOM:INT:60:360}
+
+Beginning:
+DOOR OPEN EscapeFinal
+WAIT SEC {RANDOM:INT:5:20}
+
+VariableSettings:
+GOTO Beginning $IF {SPECTATOR} = 0
+GLOBALPLAYERVAR SET SERPENTS {PLAYERSDEAD}
+
+WAIT MIL 100
+
+# CASSIE Announcement
+CASSIE LOUD jam_023_4 FACILITY .G2 CONTAINMENTUNIT .G6 OMICRON jam_043_3 {SERPENTS} DESIGNATED .G3 SERPENTS HAND HASENTERED jam_075_4 NOSCPSLEFT|Facility Containment Unit OMICRON-{SERPENTS} designated <color=#b026ff>Serpent's Hand</color> has entered the facility.<size=0>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</size><split>Substantial threat to safety remains within the facility -- <size=0>////////////////////////////////////////////////////////////////////////////////////////////////////////</size>exercise caution.
+
+SerpentsHandSpawning:
+SETROLE {SERPENTS} Tutorial
+TPX {SERPENTS} 128.203 988.792 27.723
+GIVELOADOUT {SERPENTS} ChaosRepressor
+HP {SERPENTS} 125
+
+ITEM REMOVE {SERPENTS} KeycardChaosInsurgency
+
+ITEM ADD {SERPENTS} Radio
+ITEM ADD {SERPENTS} GunRevolver
+ITEM ADD {SERPENTS} KeycardFacilityManager
+
+WAIT SEC 1
+CUSTOMINFO SET {SERPENTS} Foundation Oppressor
+
+WAIT SEC 5
+GLOBALPLAYERVAR REMOVE {SERPENTS}
